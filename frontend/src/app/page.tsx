@@ -2,7 +2,7 @@ import Principal from "./principal/page";
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <Principal />
     </div>
   );
