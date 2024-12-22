@@ -2,15 +2,20 @@
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Modal from "../Modal";
 import { FormEventHandler, useState } from "react";
+import { adicionaTarefa } from "@/api/api";
 
 export default function BtnAdicionaTarefa() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [novaTarefa, setNovaTarefa] = useState<string>("");
+  const [novaTarefaValor, setNovaTarefaValor] = useState<string>("");
 
-  const handleSubmitNewTask: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmitNewTask: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    console.log(novaTarefa);
-    setNovaTarefa("");
+    await adicionaTarefa({
+      id: "4",
+      titulo: novaTarefaValor,
+    });
+    setNovaTarefaValor("");
+    setModalOpen(false);
   };
   return (
     <div>
@@ -26,11 +31,11 @@ export default function BtnAdicionaTarefa() {
         <form onSubmit={handleSubmitNewTask}>
           <h3 className="font-bold text-lg">Adicionar Tarefa</h3>
           <input
-            value={novaTarefa}
-            onChange={(e) => setNovaTarefa(e.target.value)}
+            value={novaTarefaValor}
+            onChange={(e) => setNovaTarefaValor(e.target.value)}
             type="text"
             placeholder="Type here"
-            className="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full"
           />
           <button className="btn" type="submit">
             Cadastrar

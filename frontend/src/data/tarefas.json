@@ -2,13 +2,19 @@
   "tarefas": [
     {
       "id": "1",
-      "titulo": "Estudar",
-      "prioridade": "Alta"
+      "titulo": "Estudar"
     },
     {
       "id": "2",
-      "titulo": "Lavar a louça",
-      "prioridade": "Média"
+      "titulo": "Lavar a louça"
+    },
+    {
+      "id": "3",
+      "titulo": "Opa"
+    },
+    {
+      "id": "4",
+      "titulo": "Teste again"
     }
   ]
 }
