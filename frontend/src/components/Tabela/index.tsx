@@ -1,4 +1,5 @@
 import { ITarefa } from "@/types/tarefas";
+import Tarefa from "../Tarefa";
 
 interface TabelaProps {
   tarefas: ITarefa[];
@@ -17,10 +18,7 @@ export default function Tabela({ tarefas }: TabelaProps) {
         </thead>
         <tbody>
           {tarefas.map((tarefa) => (
-            <tr key={tarefa.id}>
-              <td>{tarefa.titulo}</td>
-              <td>{tarefa.prioridade}</td>
-            </tr>
+            <Tarefa key={tarefa.id} tarefa={tarefa} />
           ))}
         </tbody>
       </table>
