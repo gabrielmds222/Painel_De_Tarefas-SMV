@@ -3,7 +3,7 @@ import { ITarefa } from "@/types/tarefas";
 const baseUrl = "http://localhost:3001";
 
 export const buscaTodasAsTarefas = async (): Promise<ITarefa[]> => {
-  const res = await fetch(`${baseUrl}/tarefas`);
+  const res = await fetch(`${baseUrl}/tarefas`, { cache: "no-store" });
   const tarefas = await res.json();
   return tarefas;
 };

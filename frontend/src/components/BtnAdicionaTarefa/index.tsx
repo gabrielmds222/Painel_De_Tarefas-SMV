@@ -3,19 +3,23 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import Modal from "../Modal";
 import { FormEventHandler, useState } from "react";
 import { adicionaTarefa } from "@/api/api";
+import { useRouter } from "next/navigation";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BtnAdicionaTarefa() {
+  const router = useRouter();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [novaTarefaValor, setNovaTarefaValor] = useState<string>("");
 
   const handleSubmitNewTask: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await adicionaTarefa({
-      id: "4",
+      id: uuidv4(),
       titulo: novaTarefaValor,
     });
     setNovaTarefaValor("");
     setModalOpen(false);
+    router.refresh();
   };
   return (
     <div>
