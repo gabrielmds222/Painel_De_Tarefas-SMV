@@ -1,0 +1,14 @@
+{
+  "tarefas": [
+    {
+      "id": "1",
+      "titulo": "Estudar",
+      "prioridade": "Alta"
+    },
+    {
+      "id": "2",
+      "titulo": "Lavar a louça",
+      "prioridade": "Média"
+    }
+  ]
+}
