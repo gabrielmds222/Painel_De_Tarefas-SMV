@@ -1,20 +1,10 @@
 {
   "tarefas": [
     {
-      "id": "2",
-      "titulo": "Lavar a louça amanhã"
-    },
-    {
-      "id": "f2122e27-0c88-4a77-9c30-8297debe5deb",
-      "titulo": "Teste"
-    },
-    {
-      "id": "d7f6f054-47c7-4494-b07c-e792b2540c21",
-      "titulo": "Mais teste de novo"
-    },
-    {
-      "id": "c72d1a49-da7b-44a9-a5ca-4aaf3ef57627",
-      "titulo": "Teste de uma tarefa com um nome desnecessariamente grande só pra ver um negóciio"
+      "id": "ec73c80a-4c97-498b-a3bc-21d49570387d",
+      "titulo": "teste",
+      "prioridade": "Alta",
+      "status": false
     }
   ]
 }

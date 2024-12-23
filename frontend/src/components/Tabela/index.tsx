@@ -9,7 +9,6 @@ export default function Tabela({ tarefas }: TabelaProps) {
   return (
     <div className="overflow-x-auto">
       <table className="table">
-        {/* head */}
         <thead>
           <tr>
             <th>Título</th>
@@ -18,9 +17,17 @@ export default function Tabela({ tarefas }: TabelaProps) {
           </tr>
         </thead>
         <tbody>
-          {tarefas.map((tarefa) => (
-            <Tarefa key={tarefa.id} tarefa={tarefa} />
-          ))}
+          {tarefas
+            .sort((a, b) => {
+              const prioridades = ["Urgente", "Alta", "Média", "Baixa"];
+              return (
+                prioridades.indexOf(a.prioridade) -
+                prioridades.indexOf(b.prioridade)
+              );
+            })
+            .map((tarefa) => (
+              <Tarefa key={tarefa.id} tarefa={tarefa} />
+            ))}
         </tbody>
       </table>
     </div>

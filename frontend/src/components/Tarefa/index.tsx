@@ -17,12 +17,17 @@ export default function Tarefa({ tarefa }: TarefaProps) {
   const [editarValorTarefa, setEditarValorTarefa] = useState<string>(
     tarefa.titulo
   );
+  const [editarPrioridadeTarefa, setEditarPrioridadeTarefa] = useState<
+    ITarefa["prioridade"]
+  >(tarefa.prioridade);
 
   const handleSubmitEditTask: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await editarTarefa({
       id: tarefa.id,
       titulo: editarValorTarefa,
+      prioridade: editarPrioridadeTarefa,
+      status: tarefa.status,
     });
     setEditarValorTarefa("");
     setOpenModalEdit(false);
@@ -38,7 +43,7 @@ export default function Tarefa({ tarefa }: TarefaProps) {
   return (
     <tr key={tarefa.id}>
       <td className="w-full">{tarefa.titulo}</td>
-      <td>Alta</td>
+      <td>{tarefa.prioridade}</td>
       <td className="flex gap-5">
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
@@ -46,21 +51,48 @@ export default function Tarefa({ tarefa }: TarefaProps) {
           className="text-blue-500"
           size={25}
         />
+
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
           <form onSubmit={handleSubmitEditTask}>
-            <h3 className="font-bold text-lg">Editar Tarefa</h3>
+            <h3 className="font-bold text-lg">Adicionar Tarefa</h3>
             <input
               value={editarValorTarefa}
               onChange={(e) => setEditarValorTarefa(e.target.value)}
               type="text"
-              placeholder="Type here"
+              placeholder="Digite o título da tarefa"
               className="input input-bordered w-full"
             />
-            <button className="btn" type="submit">
+            <label
+              htmlFor="prioridade-tarefa"
+              className="block text-sm font-medium mb-2"
+            >
+              Prioridade
+            </label>
+            <select
+              id="prioridade-tarefa"
+              className="select select-bordered w-full"
+              value={editarPrioridadeTarefa}
+              onChange={(e) =>
+                setEditarPrioridadeTarefa(
+                  e.target.value as ITarefa["prioridade"]
+                )
+              }
+              aria-label="Selecione a prioridade da tarefa"
+            >
+              <option disabled value="">
+                Selecione a prioridade
+              </option>
+              <option value="Urgente">Urgente</option>
+              <option value="Alta">Alta</option>
+              <option value="Média">Média</option>
+              <option value="Baixa">Baixa</option>
+            </select>
+            <button className="btn mt-4" type="submit">
               Cadastrar
             </button>
           </form>
         </Modal>
+
         <FaRegTrashAlt
           onClick={() => setOpenModalDeleted(true)}
           cursor="pointer"
