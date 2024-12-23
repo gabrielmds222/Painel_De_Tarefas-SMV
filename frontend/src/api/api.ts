@@ -19,3 +19,15 @@ export const adicionaTarefa = async (tarefa: ITarefa): Promise<ITarefa> => {
   const novaTarefa = await res.json();
   return novaTarefa;
 };
+
+export const editarTarefa = async (tarefa: ITarefa): Promise<ITarefa> => {
+  const res = await fetch(`${baseUrl}/tarefas/${tarefa.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tarefa),
+  });
+  const tarefaEditada = await res.json();
+  return tarefaEditada;
+};

@@ -14,6 +14,7 @@ export default function Tabela({ tarefas }: TabelaProps) {
           <tr>
             <th>Título</th>
             <th>Prioridade</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
