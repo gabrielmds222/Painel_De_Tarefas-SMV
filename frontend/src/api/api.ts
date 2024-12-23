@@ -31,3 +31,9 @@ export const editarTarefa = async (tarefa: ITarefa): Promise<ITarefa> => {
   const tarefaEditada = await res.json();
   return tarefaEditada;
 };
+
+export const deletarTarefa = async (id: string): Promise<void> => {
+  await fetch(`${baseUrl}/tarefas/${id}`, {
+    method: "DELETE",
+  });
+};

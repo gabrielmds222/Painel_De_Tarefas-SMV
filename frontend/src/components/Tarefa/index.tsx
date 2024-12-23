@@ -5,7 +5,7 @@ import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import Modal from "../Modal";
 import { useRouter } from "next/navigation";
-import { editarTarefa } from "@/api/api";
+import { deletarTarefa, editarTarefa } from "@/api/api";
 
 interface TarefaProps {
   tarefa: ITarefa;
@@ -26,6 +26,12 @@ export default function Tarefa({ tarefa }: TarefaProps) {
     });
     setEditarValorTarefa("");
     setOpenModalEdit(false);
+    router.refresh();
+  };
+
+  const handleDeleteTask = async (id: string) => {
+    await deletarTarefa(id);
+    setOpenModalDeleted(false);
     router.refresh();
   };
 
@@ -55,7 +61,20 @@ export default function Tarefa({ tarefa }: TarefaProps) {
             </button>
           </form>
         </Modal>
-        <FaRegTrashAlt cursor="pointer" className="text-red-500" size={25} />
+        <FaRegTrashAlt
+          onClick={() => setOpenModalDeleted(true)}
+          cursor="pointer"
+          className="text-red-500"
+          size={25}
+        />
+        <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
+          <h3 className="text-lg">Certeza man?</h3>
+          <div className="modal-action">
+            <button className="btn" onClick={() => handleDeleteTask(tarefa.id)}>
+              Sim
+            </button>
+          </div>
+        </Modal>
         <FaCheck cursor="pointer" className="text-green-500" size={25} />
       </td>
     </tr>

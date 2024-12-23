@@ -1,12 +1,8 @@
 {
   "tarefas": [
     {
-      "id": "1",
-      "titulo": "Estudar para a prova"
-    },
-    {
       "id": "2",
-      "titulo": "Lavar a louça"
+      "titulo": "Lavar a louça amanhã"
     },
     {
       "id": "f2122e27-0c88-4a77-9c30-8297debe5deb",
