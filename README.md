@@ -11,6 +11,9 @@ Este projeto faz parte do teste técnico da Super Megavendas, com o objetivo de 
 - Rode o comando para inciar o servidor de desenvolvimento "npm run dev"
 - Vá para a página http://localhost:3000 no seu navegador
 
+### Bônus implementados:
+- API externa utilizando Json server para simular as requisições
+
 ### 📦 Tecnologias
 
 - [nextjs] [https://beta.nextjs.org/docs](https://nextjs.org/)
